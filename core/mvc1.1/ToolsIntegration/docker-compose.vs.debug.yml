@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  toolsintegration:
+    image: toolsintegration:dev
+    build:
+      args:
+        source: ${DOCKER_BUILD_SOURCE}
+    environment:
+      - DOTNET_USE_POLLING_FILE_WATCHER=1
+    volumes:
+      - ./ToolsIntegration:/app
+      - ${NUGET_PACKAGES}:/root/.nuget/packages:ro
+      - ${VSDBG_PATH}:/remote_debugger:ro
+    entrypoint: tail -f /dev/null
+    labels:
+      - "com.microsoft.visualstudio.targetoperatingsystem=linux"
