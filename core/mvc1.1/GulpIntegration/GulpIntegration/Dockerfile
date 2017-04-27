@@ -14,8 +14,9 @@ FROM node:alpine as clientenv
 
 RUN npm install -g gulp
 WORKDIR /app
-COPY . .
+COPY package.json .
 RUN npm install
+COPY . .
 
 RUN gulp
 
