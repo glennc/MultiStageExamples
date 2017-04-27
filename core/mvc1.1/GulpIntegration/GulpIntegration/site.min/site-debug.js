@@ -1,2 +1,2 @@
 // Write your Javascript code.
-var s = "Something.";
+var s = "Test some stuff.";
